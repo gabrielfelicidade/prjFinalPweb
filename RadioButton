@@ -1,0 +1,41 @@
+XHTML
+
+		<h:form id="formTeste">
+			<h3 style="margin-top: 0">Basic</h3>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+				<p:outputLabel for="console" value="Console:" />
+				<p:selectOneRadio id="console" value="#{radioView.console}">
+					<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</p:selectOneRadio>
+			</h:panelGrid>
+
+			<p:commandButton value="Submit" update="display" icon="pi pi-check"
+				oncomplete="PF('dlg').show()" />
+
+			<p:dialog modal="true" resizable="false" widgetVar="dlg"
+				header="Values" showEffect="clip">
+				<p:panelGrid columns="2" id="display" columnClasses="label,value">
+					<h:outputText value="Console:" />
+					<h:outputText value="#{radioView.console}" />
+				</p:panelGrid>
+			</p:dialog>
+		</h:form>
+
+Bean
+
+@ManagedBean
+public class RadioView {
+
+	private String console;
+
+	public String getConsole() {
+		return console;
+	}
+
+	public void setConsole(String console) {
+		this.console = console;
+	}
+
+}
